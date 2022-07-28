@@ -5,7 +5,7 @@ variable "location" {
   type        = list(string)
   description = "Azure Region"
   default = ["UK South",
-  "North Europe"]
+  "France Central"]
 }
 
 variable "azure_resource_group_name" {
@@ -17,7 +17,7 @@ variable "azure_resource_group_name" {
 variable "resource_name" {
   type        = string
   description = "Name For The Azure Virtual Machine"
-  default     = "terraform-session"
+  default     = "TF-S"
 }
 
 variable "azure_vm_size" {
@@ -43,7 +43,7 @@ variable "network_address" {
   description = "Network address space"
   default = {
     "UK South"     = "10.0.0.0/22"
-    "North Europe" = "10.1.0.0/22"
+    "France Central" = "10.1.0.0/22"
   }
 }
 
