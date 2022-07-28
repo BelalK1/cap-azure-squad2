@@ -32,6 +32,18 @@ steps:
     inputs:
       command: 'plan'
       environmentServiceName: 'Aseem-Azure Sub'
-      runAzLogin: true
       allowTelemetryCollection: true
 
+  - task: TerraformCLI@0
+    displayName: 'Terraform Apply'
+    inputs:
+      command: 'apply'
+      environmentServiceName: 'Aseem-Azure Sub'
+      allowTelemetryCollection: true
+
+  - task: TerraformCLI@0
+    displayName: 'Terraform Destroy'
+    inputs:
+      command: 'destroy'
+      environmentServiceName: 'Aseem-Azure Sub'
+      allowTelemetryCollection: true
