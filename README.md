@@ -1,2 +1,8 @@
-# cap-azure-squad2
-A copy of our code from training 
+# pe-chapter-iac-pathway-cohort2-squad2
+Azure team
+
+# Members 
+ -Abraham
+ -Belal
+ -Zain
+ -Tom
