@@ -40,10 +40,3 @@ steps:
       command: 'apply'
       environmentServiceName: 'Aseem-Azure Sub'
       allowTelemetryCollection: true
-
-  - task: TerraformCLI@0
-    displayName: 'Terraform Destroy'
-    inputs:
-      command: 'destroy'
-      environmentServiceName: 'Aseem-Azure Sub'
-      allowTelemetryCollection: true
