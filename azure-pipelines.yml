@@ -11,22 +11,27 @@ pool:
 
 steps:
   - task: TerraformInstaller@0
+    displayName: 'Terraform Install'
     inputs:
       terraformVersion: 'latest'
 
   - task: TerraformCLI@0
+    displayName: 'Terraform Init'
     inputs:
       command: 'init'
       allowTelemetryCollection: true
 
   - task: TerraformCLI@0
+    displayName: 'Terraform Validate'
     inputs:
       command: 'validate'
       allowTelemetryCollection: true
 
   - task: TerraformCLI@0
+    displayName: 'Terraform Plan'
     inputs:
       command: 'plan'
       environmentServiceName: 'Aseem-Azure Sub'
       runAzLogin: true
       allowTelemetryCollection: true
+
