@@ -7,5 +7,5 @@ jobs:
       - template: ../tasks/terraform-init.yml
       
       - template: ../tasks/artifact-download.yml
-      - template: ../tasks/bash.yml
-      #- template: ../tasks/terraform-apply.yml
+      
+      - template: ../tasks/terraform-apply.yml
