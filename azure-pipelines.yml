@@ -44,6 +44,8 @@ steps:
       command: 'plan'
       environmentServiceName: $(backendServiceArm)
       allowTelemetryCollection: true
+      publishPlanResults: 'plan-results'
+      commandOptions: '-out plan-results.tfplan'
 
   - task: TerraformCLI@0
     displayName: 'Terraform Apply'
@@ -51,3 +53,4 @@ steps:
       command: 'apply'
       environmentServiceName: $(backendServiceArm)
       allowTelemetryCollection: true
+      commandOptions: 'plan-results.tfplan'
