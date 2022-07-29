@@ -12,9 +12,7 @@ pool:
 variables:
 - group: belal_backend_variable_group
 
-jobs:
-- template: jobs/terraform_validate.yml
+stages:
+- template: stages/validate_plan.yml
 
-- template: jobs/terraform_plan.yml
-
-- template: jobs/terraform_apply.yml
+- template: stages/apply.yml

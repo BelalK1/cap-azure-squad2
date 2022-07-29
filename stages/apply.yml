@@ -1,0 +1,4 @@
+stages:
+  - stage: Terraform_Apply
+    jobs:
+    - template: ../jobs/terraform_apply.yml

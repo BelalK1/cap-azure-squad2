@@ -1,0 +1,5 @@
+stages:
+  - stage: Terraform_Validate_Plan
+    jobs:
+    - template: ../jobs/terraform_validate.yml
+    - template: ../jobs/terraform_plan.yml
