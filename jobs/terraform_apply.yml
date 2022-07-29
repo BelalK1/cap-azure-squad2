@@ -6,7 +6,8 @@ jobs:
     runOnce:
       deploy:
         steps:
-          checkout: self
+        - checkout: self
+
         - template: ../tasks/terraform-install.yml
 
         - template: ../tasks/terraform-init.yml
