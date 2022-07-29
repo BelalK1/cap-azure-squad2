@@ -5,4 +5,4 @@ steps:
       command: 'apply'
       environmentServiceName: $(backendServiceArm)
       allowTelemetryCollection: true
-      commandOptions: 'plan-results.tfplan'
+      commandOptions: '$(Pipeline.Workspace)/terraform_plan/plan-results.tfplan'

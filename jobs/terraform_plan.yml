@@ -11,4 +11,4 @@ jobs:
 
       - template: ../tasks/terraform-plan.yml
 
-      - template: ../tasks/artifact-plan.yml
+      - template: ../tasks/artifact-publish.yml
