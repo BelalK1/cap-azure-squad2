@@ -1,7 +1,6 @@
 jobs:
   - job: Terraform_Apply
     displayName: 'Terraform Apply'
-    dependsOn: Terraform_Plan
     steps:
       - template: ../tasks/terraform-install.yml
 

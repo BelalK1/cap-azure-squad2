@@ -1,4 +1,5 @@
 stages:
   - stage: Terraform_Apply
+    dependsOn: Terraform_Validate_Plan
     jobs:
     - template: ../jobs/terraform_apply.yml
