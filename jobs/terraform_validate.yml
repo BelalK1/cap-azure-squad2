@@ -1,0 +1,9 @@
+jobs:
+- job: Terraform_Validate
+  displayName: 'Terraform Validate'
+  steps:
+    - template: ../tasks/terraform-install.yml
+
+    - template: ../tasks/terraform-init.yml
+
+    - template: ../tasks/terraform-validate.yml

@@ -1,0 +1,10 @@
+jobs:
+  - job: Terraform_Plan
+    displayName: 'Terraform Plan'
+    dependsOn: Terraform_Validate
+    steps:
+      - template: ../tasks/terraform-install.yml
+
+      - template: ../tasks/terraform-init.yml
+
+      - template: ../tasks/terraform-plan.yml

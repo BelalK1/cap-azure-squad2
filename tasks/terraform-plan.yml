@@ -1,0 +1,9 @@
+steps:
+  - task: TerraformCLI@0
+    displayName: 'Terraform Plan'
+    inputs:
+      command: 'plan'
+      environmentServiceName: $(backendServiceArm)
+      allowTelemetryCollection: true
+      publishPlanResults: 'plan-results'
+      commandOptions: '-out plan-results.tfplan'

@@ -1,0 +1,14 @@
+steps:
+  - task: TerraformCLI@0
+    displayName: 'Terraform Init'
+    inputs:
+      command: 'init'
+      allowTelemetryCollection: true
+      backendServiceArm: $(backendServiceArm)
+      backendAzureRmResourceGroupName: $(backendAzureRmResourceGroupName)
+      backendAzureRmStorageAccountName: $(backendAzureRmStorageAccountName)
+      backendAzureRmContainerName: $(backendAzureRmContainerName)
+      backendAzureRmKey: $(backendAzureRmKey)
+      backendAzureRmResourceGroupLocation: $(backendAzureRmResourceGroupLocation)
+      backendType: $(backendType)
+      ensureBackend: true 
