@@ -7,4 +7,8 @@ jobs:
 
       - template: ../tasks/terraform-init.yml
 
+      - template: ../tasks/mkdir.yml
+
       - template: ../tasks/terraform-plan.yml
+
+      - template: ../tasks/artifact-plan.yml

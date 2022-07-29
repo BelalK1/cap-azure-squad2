@@ -1,0 +1,6 @@
+steps:
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: 'output'
+      artifact: 'terraform_plan'
+      publishLocation: 'pipeline'
