@@ -6,4 +6,4 @@ steps:
       environmentServiceName: $(backendServiceArm)
       allowTelemetryCollection: true
       publishPlanResults: 'plan-results'
-      commandOptions: '-out output/plan-results.tfplan'
+      commandOptions: '-out output/plan-results.tfplan -detailed-exitcode'

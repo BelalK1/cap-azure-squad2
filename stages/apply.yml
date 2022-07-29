@@ -1,5 +1,6 @@
 stages:
   - stage: Terraform_Apply
     dependsOn: Terraform_Validate_Plan
+    condition: and(succeeded(), eq(dependencies.Terraform_Validate_Plan.outputs['Terraform_Plan.Variable.ShouldRun'], 'true'))
     jobs:
     - template: ../jobs/terraform_apply.yml
