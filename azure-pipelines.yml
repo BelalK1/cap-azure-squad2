@@ -12,45 +12,91 @@ pool:
 variables:
 - group: belal_backend_variable_group
 
-steps:
-  - task: TerraformInstaller@0
-    displayName: 'Terraform Install'
-    inputs:
-      terraformVersion: 'latest'
+jobs:
+- job: Terraform_Validate
+  displayName: 'Terraform Validate'
+  steps:
+    - task: TerraformInstaller@0
+      displayName: 'Terraform Install'
+      inputs:
+        terraformVersion: 'latest'
 
-  - task: TerraformCLI@0
-    displayName: 'Terraform Init'
-    inputs:
-      command: 'init'
-      allowTelemetryCollection: true
-      backendServiceArm: $(backendServiceArm)
-      backendAzureRmResourceGroupName: $(backendAzureRmResourceGroupName)
-      backendAzureRmStorageAccountName: $(backendAzureRmStorageAccountName)
-      backendAzureRmContainerName: $(backendAzureRmContainerName)
-      backendAzureRmKey: $(backendAzureRmKey)
-      backendAzureRmResourceGroupLocation: $(backendAzureRmResourceGroupLocation)
-      backendType: $(backendType)
-      ensureBackend: true 
+    - task: TerraformCLI@0
+      displayName: 'Terraform Init'
+      inputs:
+        command: 'init'
+        allowTelemetryCollection: true
+        backendServiceArm: $(backendServiceArm)
+        backendAzureRmResourceGroupName: $(backendAzureRmResourceGroupName)
+        backendAzureRmStorageAccountName: $(backendAzureRmStorageAccountName)
+        backendAzureRmContainerName: $(backendAzureRmContainerName)
+        backendAzureRmKey: $(backendAzureRmKey)
+        backendAzureRmResourceGroupLocation: $(backendAzureRmResourceGroupLocation)
+        backendType: $(backendType)
+        ensureBackend: true 
 
-  - task: TerraformCLI@0
-    displayName: 'Terraform Validate'
-    inputs:
-      command: 'validate'
-      allowTelemetryCollection: true
+    - task: TerraformCLI@0
+      displayName: 'Terraform Validate'
+      inputs:
+        command: 'validate'
+        allowTelemetryCollection: true
 
-  - task: TerraformCLI@0
-    displayName: 'Terraform Plan'
-    inputs:
-      command: 'plan'
-      environmentServiceName: $(backendServiceArm)
-      allowTelemetryCollection: true
-      publishPlanResults: 'plan-results'
-      commandOptions: '-out plan-results.tfplan'
+- job: Terraform_Plan
+  displayName: 'Terraform Plan'
+  steps:
+    - task: TerraformInstaller@0
+      displayName: 'Terraform Install'
+      inputs:
+        terraformVersion: 'latest'
+    - task: TerraformCLI@0
+      displayName: 'Terraform Init'
+      inputs:
+        command: 'init'
+        allowTelemetryCollection: true
+        backendServiceArm: $(backendServiceArm)
+        backendAzureRmResourceGroupName: $(backendAzureRmResourceGroupName)
+        backendAzureRmStorageAccountName: $(backendAzureRmStorageAccountName)
+        backendAzureRmContainerName: $(backendAzureRmContainerName)
+        backendAzureRmKey: $(backendAzureRmKey)
+        backendAzureRmResourceGroupLocation: $(backendAzureRmResourceGroupLocation)
+        backendType: $(backendType)
+        ensureBackend: true 
 
-  - task: TerraformCLI@0
-    displayName: 'Terraform Apply'
-    inputs:
-      command: 'apply'
-      environmentServiceName: $(backendServiceArm)
-      allowTelemetryCollection: true
-      commandOptions: 'plan-results.tfplan'
+    - task: TerraformCLI@0
+      displayName: 'Terraform Plan'
+      inputs:
+        command: 'plan'
+        environmentServiceName: $(backendServiceArm)
+        allowTelemetryCollection: true
+        publishPlanResults: 'plan-results'
+        commandOptions: '-out plan-results.tfplan'
+
+- job: Terraform_Apply
+  displayName: 'Terraform Apply'
+  steps:
+    - task: TerraformInstaller@0
+      displayName: 'Terraform Install'
+      inputs:
+        terraformVersion: 'latest'
+
+    - task: TerraformCLI@0
+      displayName: 'Terraform Init'
+      inputs:
+        command: 'init'
+        allowTelemetryCollection: true
+        backendServiceArm: $(backendServiceArm)
+        backendAzureRmResourceGroupName: $(backendAzureRmResourceGroupName)
+        backendAzureRmStorageAccountName: $(backendAzureRmStorageAccountName)
+        backendAzureRmContainerName: $(backendAzureRmContainerName)
+        backendAzureRmKey: $(backendAzureRmKey)
+        backendAzureRmResourceGroupLocation: $(backendAzureRmResourceGroupLocation)
+        backendType: $(backendType)
+        ensureBackend: true 
+
+    - task: TerraformCLI@0
+      displayName: 'Terraform Apply'
+      inputs:
+        command: 'apply'
+        environmentServiceName: $(backendServiceArm)
+        allowTelemetryCollection: true
+        commandOptions: 'plan-results.tfplan'
