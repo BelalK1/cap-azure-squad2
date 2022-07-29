@@ -1,11 +1,16 @@
 jobs:
-  - job: Terraform_Apply
-    displayName: 'Terraform Apply'
-    steps:
-      - template: ../tasks/terraform-install.yml
+- deployment: Terraform_Apply
+  continueOnError: true
+  environment: $(Environment)
+  strategy:
+    runOnce:
+      deploy:
+        steps:
 
-      - template: ../tasks/terraform-init.yml
-      
-      - template: ../tasks/artifact-download.yml
-      
-      - template: ../tasks/terraform-apply.yml
+        - template: ../tasks/terraform-install.yml
+
+        - template: ../tasks/terraform-init.yml
+        
+        - template: ../tasks/artifact-download.yml
+        
+        - template: ../tasks/terraform-apply.yml
